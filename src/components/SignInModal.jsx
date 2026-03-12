@@ -111,8 +111,8 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
   if (!isOpen) return null
 
   return (
-    <div className="modal-backdrop p-4 sm:p-0">
-      <div className="modal-content w-full max-w-md p-6 sm:p-8 animate-in fade-in zoom-in-95 max-h-screen overflow-y-auto">
+    <div className="modal-backdrop p-4">
+      <div className="modal-content w-full max-w-md p-5 sm:p-6 md:p-8 animate-in fade-in zoom-in-95 max-h-dvh overflow-y-auto">
         {/* Close Button */}
         <button
             onClick={handleCloseModal}

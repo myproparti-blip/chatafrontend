@@ -68,9 +68,9 @@ export function Sidebar({ conversations, currentConvId, onNewChat, onSelectChat,
             {/* Mobile Menu Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg hover:bg-gray-200"
+                className="fixed top-3 sm:top-4 left-3 sm:left-4 z-50 md:hidden p-2.5 sm:p-2 rounded-lg hover:bg-gray-200 active:bg-gray-300 transition-colors"
             >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 sm:w-6 h-6 sm:h-6" />
             </button>
 
             {/* Overlay for mobile */}
@@ -83,7 +83,7 @@ export function Sidebar({ conversations, currentConvId, onNewChat, onSelectChat,
 
             {/* Sidebar */}
             <div
-                className={`fixed md:static w-64 h-screen bg-gray-900 text-white flex flex-col z-40 transform transition-transform md:translate-x-0 overflow-hidden ${isOpen ? "translate-x-0" : "-translate-x-full"
+                className={`fixed md:static w-64 h-dvh md:h-screen bg-gray-900 text-white flex flex-col z-40 transform transition-transform md:translate-x-0 overflow-hidden ${isOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
             >
                 {/* Header */}
@@ -182,7 +182,7 @@ export function Sidebar({ conversations, currentConvId, onNewChat, onSelectChat,
                                                     e.stopPropagation()
                                                     onDeleteChat(conv.id)
                                                 }}
-                                                className={`opacity-0 sm:opacity-0 group-hover:opacity-100 p-1.5 sm:p-2 rounded-lg transition-all flex-shrink-0 ${currentConvId === conv.id
+                                                className={`opacity-0 group-hover:opacity-100 p-1.5 sm:p-2 rounded-lg transition-all flex-shrink-0 ${currentConvId === conv.id
                                                     ? "hover:bg-red-50"
                                                     : "hover:bg-gray-700"
                                                     }`}
@@ -237,8 +237,8 @@ export function Sidebar({ conversations, currentConvId, onNewChat, onSelectChat,
 
             {/* Delete Multiple Confirm Modal */}
             {isDeleteModalOpen && (
-                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 sm:p-0">
-                    <div className="bg-white rounded-lg shadow-lg p-5 sm:p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+                    <div className="bg-white rounded-lg shadow-lg p-5 sm:p-6 md:p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
                         <div className="flex items-start gap-3 sm:gap-4">
                             <div className="flex-shrink-0 mt-0.5">
                                 <Trash className="w-5 sm:w-6 h-5 sm:h-6 text-red-600" />

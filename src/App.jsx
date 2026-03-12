@@ -78,7 +78,7 @@ function App() {
   // Show loading state while restoring auth
   if (isLoadingAuth) {
     return (
-      <div className="h-screen flex items-center justify-center bg-white">
+      <div className="h-dvh flex items-center justify-center bg-white">
         <p className="text-gray-500">Loading...</p>
       </div>
     )

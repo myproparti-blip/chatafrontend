@@ -8,12 +8,12 @@ export function LogoutModal({ isOpen, onConfirm, onCancel }) {
     <>
       {/* Modal Overlay */}
       <div
-        className="modal-backdrop p-4 sm:p-0"
+        className="modal-backdrop p-4"
         onClick={onCancel}
       >
         {/* Modal Content */}
         <div
-          className="modal-content p-5 sm:p-6 w-full max-w-sm"
+          className="modal-content p-5 sm:p-6 md:p-6 w-full max-w-sm"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-start gap-3 sm:gap-4">
