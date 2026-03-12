@@ -307,7 +307,7 @@ export function ChatPage({
   }
 
   return (
-    <div className="h-dvh bg-white flex overflow-hidden">
+    <div className="h-dvh bg-white flex overflow-hidden relative">
       {/* Sidebar */}
       <Sidebar
         conversations={conversations}
@@ -335,18 +335,18 @@ export function ChatPage({
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-dvh overflow-hidden bg-white border-l border-gray-200">
         {/* Header */}
-        <div className="border-b border-gray-200 px-2 xs:px-3 sm:px-6 py-2.5 xs:py-3 sm:py-4 bg-white flex items-center justify-between flex-shrink-0 gap-1.5 xs:gap-2 sm:gap-4">
-          <div className="min-w-0 flex-1">
-            <h1 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">
-              AI Chat Assistant
-            </h1>
+         <div className="border-b border-gray-200 px-2 xs:px-3 sm:px-6 py-2.5 xs:py-3 sm:py-4 bg-white flex items-center justify-between flex-shrink-0 gap-1.5 xs:gap-2 sm:gap-4 md:px-6">
+           <div className="min-w-0 flex-1 pl-8 md:pl-0">
+             <h1 className="text-sm xs:text-base sm:text-xl font-semibold text-gray-900 truncate">
+               AI Chat Assistant
+             </h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 hidden sm:block">
               Powered by Mahim Architect
             </p>
           </div>
 
           {/* Right side: Profile or Login */}
-          <div className="flex items-center gap-4 sm:gap-6 flex-shrink-0">
+          <div className="flex items-center gap-2 xs:gap-3 sm:gap-4 md:gap-6 flex-shrink-0">
             <Chip
               label="New"
               variant="primary"

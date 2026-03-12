@@ -66,17 +66,19 @@ export function Sidebar({ conversations, currentConvId, onNewChat, onSelectChat,
     return (
         <>
             {/* Mobile Menu Button */}
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="fixed top-3 sm:top-4 left-3 sm:left-4 z-50 md:hidden p-2.5 sm:p-2 rounded-lg hover:bg-gray-200 active:bg-gray-300 transition-colors"
-            >
-                <Menu className="w-6 sm:w-6 h-6 sm:h-6" />
-            </button>
+            {!isOpen && (
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="fixed top-3 sm:top-4 left-3 sm:left-4 z-40 md:hidden p-2.5 sm:p-2 rounded-lg hover:bg-gray-200 active:bg-gray-300 transition-colors"
+                >
+                    <Menu className="w-6 sm:w-6 h-6 sm:h-6" />
+                </button>
+            )}
 
             {/* Overlay for mobile */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/50 z-30 md:hidden"
+                    className="fixed inset-0 bg-black/50 z-35 md:hidden"
                     onClick={() => setIsOpen(false)}
                 />
             )}
@@ -115,10 +117,10 @@ export function Sidebar({ conversations, currentConvId, onNewChat, onSelectChat,
                         <>
                             <button
                                 onClick={onNewChat}
-                                className="w-full flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium transition-colors"
+                                className="w-full flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-medium transition-colors duration-200"
                             >
-                                <Plus className="w-4 h-4" />
-                                New chat
+                                <Plus className="w-4 h-4 flex-shrink-0" />
+                                <span className="truncate">New chat</span>
                             </button>
                             {conversations.length > 0 && (
                                 <button

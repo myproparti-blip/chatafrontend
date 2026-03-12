@@ -15,6 +15,9 @@ export default {
       '2xl': '1536px',
     },
     extend: {
+      zIndex: {
+        35: '35',
+      },
       height: {
         dvh: '100dvh',
         svh: '100svh',
