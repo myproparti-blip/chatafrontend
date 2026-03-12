@@ -67,7 +67,6 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
       const data = await authApi.verifyOtp(phoneNumber, otp)
 
       if (data.success) {
-         setAuthToken(data.token)
          const userName = data.user.name || `User ${phoneNumber.slice(-4)}`
          
          // Call parent sign in handler with object
@@ -77,6 +76,8 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
            name: userName,
            id: data.user.id,
          })
+         
+         // Reset form after successful sign in
          resetForm()
       } else {
         setError(data.error || 'OTP verification failed')

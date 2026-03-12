@@ -58,11 +58,21 @@ function App() {
 
   // Handle logout
   const handleLogout = () => {
+    // Clear localStorage
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('userPhone')
+    localStorage.removeItem('userName')
+    localStorage.removeItem('userId')
+    
+    // Clear state
     setIsLoggedIn(false)
     setAuthToken('')
     setUserPhone('')
     setUserName('')
     setUserId(null)
+    
+    // Open sign in modal
+    setIsSignInModalOpen(true)
   }
 
   // Show loading state while restoring auth
