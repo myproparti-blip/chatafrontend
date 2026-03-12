@@ -30,7 +30,6 @@ export function ChatPage({
   const [conversations, setConversations] = useState([])
   const [currentConvId, setCurrentConvId] = useState(null)
   const [isLoadingConversations, setIsLoadingConversations] = useState(true)
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false)
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [pendingDeleteId, setPendingDeleteId] = useState(null)
@@ -176,10 +175,10 @@ export function ChatPage({
   }
 
   const handleNewChat = async () => {
-    if (!userId) {
-      setIsSignInModalOpen(true)
-      return
-    }
+     if (!userId) {
+       onLogin()
+       return
+     }
 
     try {
       const data = await conversationsApi.create(userId, 'New chat')
@@ -367,7 +366,7 @@ export function ChatPage({
               </div>
             ) : (
               <Button
-                onClick={() => setIsSignInModalOpen(true)}
+                onClick={onLogin}
                 className="bg-gray-800 hover:bg-gray-900 text-white flex items-center gap-1 sm:gap-2 text-sm sm:text-base py-2 px-3 sm:px-4 h-auto flex-shrink-0"
               >
                 <LogIn className="w-4 h-4" />
@@ -383,7 +382,7 @@ export function ChatPage({
             <div className="flex flex-col items-center justify-center h-full">
               <p className="text-gray-500 text-base sm:text-lg mb-4">Please sign in to continue</p>
               <Button
-                onClick={() => setIsSignInModalOpen(true)}
+                onClick={onLogin}
                 className="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 h-auto"
               >
                 Sign In
@@ -555,12 +554,7 @@ export function ChatPage({
         )}
       </div>
 
-      {/* Sign In Modal */}
-      <SignInModal
-        isOpen={isSignInModalOpen}
-        onClose={() => setIsSignInModalOpen(false)}
-        onSignIn={onLogin}
-      />
+      {/* Note: Sign In Modal is handled by parent App component */}
 
       {/* Logout Modal */}
       <LogoutModal
