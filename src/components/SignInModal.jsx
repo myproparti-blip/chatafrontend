@@ -69,16 +69,16 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
       if (data.success) {
          const userName = data.user.name || `User ${phoneNumber.slice(-4)}`
          
-         // Call parent sign in handler with object
+         // Reset form first
+         resetForm()
+         
+         // Call parent sign in handler (which closes modal)
          onSignIn({
            token: data.token,
            phone: phoneNumber,
            name: userName,
            id: data.user.id,
          })
-         
-         // Reset form after successful sign in
-         resetForm()
       } else {
         setError(data.error || 'OTP verification failed')
       }
@@ -95,6 +95,10 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
     setOtp('')
     setStep('phone')
     setError('')
+  }
+
+  const handleCloseModal = () => {
+    resetForm()
     onClose()
   }
 
@@ -111,9 +115,9 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
       <div className="modal-content w-full max-w-md p-6 sm:p-8 animate-in fade-in zoom-in-95 max-h-screen overflow-y-auto">
         {/* Close Button */}
         <button
-          onClick={resetForm}
-          className="absolute top-3 sm:top-4 right-3 sm:right-4 p-1 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0"
-        >
+            onClick={handleCloseModal}
+            className="absolute top-3 sm:top-4 right-3 sm:right-4 p-1 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0"
+          >
           <X className="w-5 sm:w-6 h-5 sm:h-6 text-gray-500" />
         </button>
 
