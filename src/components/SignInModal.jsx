@@ -69,16 +69,21 @@ export function SignInModal({ isOpen, onClose, onSignIn }) {
       if (data.success) {
          const userName = data.user.name || `User ${phoneNumber.slice(-4)}`
          
-         // Call parent sign in handler
-         onSignIn({
-           token: data.token,
-           phone: phoneNumber,
-           name: userName,
-           id: data.user.id,
-         })
+         // Reset form
+         resetForm()
          
-         // Close modal after sign in
-         closeModal()
+         // Close modal first
+         onClose()
+         
+         // Then call parent sign in handler
+         setTimeout(() => {
+           onSignIn({
+             token: data.token,
+             phone: phoneNumber,
+             name: userName,
+             id: data.user.id,
+           })
+         }, 0)
       } else {
         setError(data.error || 'OTP verification failed')
       }
